@@ -4,3 +4,11 @@
 *.jar
 *.war
 *.ear
+build/
+gradle/
+.idea/libraries/
+.gradle/
+gradlew
+gradlew.bat
+local.properties
+gradle.properties
