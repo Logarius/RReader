@@ -23,7 +23,7 @@ public class BottomTabBar extends LinearLayout {
 
     private LinearLayout.LayoutParams layoutParams = new LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
 
-    private BottomTabBarItem checkedItem = null;
+    private int checkedIndex = -1;
 
     private OnTabItemCheckChangedListener tabItemCheckChangedListener;
 
@@ -59,15 +59,15 @@ public class BottomTabBar extends LinearLayout {
     }
 
     public void checkItem(int index) {
-        if (index >= 0 && items.size() > index) {
+        if (index >= 0 && items.size() > index && checkedIndex != index) {
             BottomTabBarItem item = items.get(index);
             item.setChecked(true);
-            if (checkedItem != null) {
-                checkedItem.setChecked(false);
+            if (checkedIndex >= 0) {
+                items.get(checkedIndex).setChecked(false);
             }
-            checkedItem = item;
+            checkedIndex = index;
             if (tabItemCheckChangedListener != null) {
-                tabItemCheckChangedListener.onChange(items.indexOf(checkedItem));
+                tabItemCheckChangedListener.onChange(checkedIndex);
             }
         }
     }

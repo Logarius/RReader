@@ -1,13 +1,14 @@
 package git.osc.roland.rreader.main
 
-import android.view.View
+import android.support.v4.view.ViewPager.OnPageChangeListener
 import git.osc.roland.rreader.R
 import git.osc.roland.rreader.common.base.BaseActivity
+import git.osc.roland.rreader.common.view.BottomTabBar
 import git.osc.roland.rreader.common.view.BottomTabBarItem
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_common_header.*
 
-class MainActivity : BaseActivity(), View.OnClickListener {
+class MainActivity : BaseActivity(), OnPageChangeListener, BottomTabBar.OnTabItemCheckChangedListener {
 
     override var contentLayoutId: Int = R.layout.activity_main
 
@@ -30,14 +31,27 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun initListener() {
-
+        contentPager.addOnPageChangeListener(this)
+        bottomTabBar.setTabItemCheckChangedListener(this)
     }
 
     override fun initData() {
+        bottomTabBar.checkItem(0)
+    }
+
+    override fun onPageScrollStateChanged(state: Int) {
 
     }
 
-    override fun onClick(v: View?) {
+    override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
 
+    }
+
+    override fun onPageSelected(position: Int) {
+        bottomTabBar.checkItem(position)
+    }
+
+    override fun onChange(index: Int) {
+        contentPager.currentItem = index
     }
 }
