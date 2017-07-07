@@ -8,7 +8,7 @@ import kotlinx.android.synthetic.main.layout_common_header.*
 
 class WelcomeActivity : BaseActivity() {
 
-    override val contentLayoutId: Int = R.layout.activity_welcome
+    override var contentLayoutId: Int = R.layout.activity_welcome
 
     override fun initComp() {
         tvTitle.text = TAG

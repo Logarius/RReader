@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.layout_common_header.*
 
 class MainActivity : BaseActivity(), View.OnClickListener {
 
-    override val contentLayoutId: Int = R.layout.activity_main
+    override var contentLayoutId: Int = R.layout.activity_main
 
     override fun initComp() {
         tvTitle.text = TAG
@@ -26,7 +26,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         bottomTabBar.addItem(item1)
         bottomTabBar.addItem(item2)
 
-        bottomTabBar.checkItem(0)
+        contentPager.adapter = ContentPagerAdapter(supportFragmentManager)
     }
 
     override fun initListener() {

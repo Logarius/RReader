@@ -10,7 +10,7 @@ abstract class BaseActivity: AppCompatActivity() {
 
     val TAG: String = javaClass.simpleName
 
-    open val contentLayoutId: Int = 0
+    open var contentLayoutId: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

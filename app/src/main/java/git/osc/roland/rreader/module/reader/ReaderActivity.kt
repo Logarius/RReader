@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.activity_reader.*
 
 class ReaderActivity : BaseActivity() {
 
-    override val contentLayoutId: Int = R.layout.activity_reader
+    override var contentLayoutId: Int = R.layout.activity_reader
 
     override fun initComp() {
         screenMenu.topMenuVisibility = View.VISIBLE
